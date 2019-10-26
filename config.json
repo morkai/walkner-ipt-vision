@@ -1,0 +1,30 @@
+{
+  "writeLastImage": "{root}/last.webp",
+  "waitForResults": 5000,
+  "ftp": {
+    "enabled": true,
+    "url": "ftp://10.13.37.250:21",
+    "user": "walkner",
+    "pass": "Walkner1",
+    "root": "{root}/ftp",
+    "waitForFiles": 10000
+  },
+  "devices": {
+    "test-keyence-1": {
+      "type": "keyence-iv-hg",
+      "host": "10.13.37.150",
+      "port": 44818
+    },
+    "test-cognex-1": {
+      "type": "cognex-is2000",
+      "host": "10.0.0.151",
+      "user": "admin",
+      "pass": "",
+      "udp": {
+        "host": "10.0.0.250",
+        "port": 3000
+      },
+      "waitForResults": 5000
+    }
+  }
+}

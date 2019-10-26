@@ -1,0 +1,18 @@
+{
+  "steps": [
+    {
+      "device": "test-cognex-1",
+      "program": "walkner-ipt-vision"
+    },
+    {
+      "device": "test-keyence-1",
+      "program": 0,
+      "tools": 16
+    },
+    {
+      "device": "test-keyence-1",
+      "program": 1,
+      "tools": 16
+    }
+  ]
+}
