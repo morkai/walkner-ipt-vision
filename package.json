@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "guid": "A2DF9978-7FC7-4CC8-BC7D-BD2F6C627BD0",
+  "name": "walkner-ipt-vision",
+  "version": "2",
+  "description": "Walkner IPT Vision Controller",
+  "license": "CC BY-NC-SA 4.0",
+  "homepage": "https://github.com/morkai/walkner-ipt-vision",
+  "author": {
+    "name": "Łukasz Walukiewicz",
+    "email": "lukasz@miracle.systems",
+    "url": "http://miracle.systems/"
+  },
+  "bugs": "https://github.com/morkai/walkner-ipt-vision/issues",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/morkai/walkner-ipt-vision.git"
+  },
+  "engines": {
+    "node": ">=10.0.0 <11.0.0"
+  },
+  "main": "./backend/main",
+  "dependencies": {
+    "ftp-srv": "~4.2.0",
+    "h5.step": "morkai/h5.step",
+    "lodash": "~4.17.15",
+    "sharp": "~0.23.1"
+  },
+  "devDependencies": {
+
+  }
+}
