@@ -2,7 +2,7 @@
   "private": true,
   "guid": "A2DF9978-7FC7-4CC8-BC7D-BD2F6C627BD0",
   "name": "walkner-ipt-vision",
-  "version": "2",
+  "version": "3",
   "description": "Walkner IPT Vision Controller",
   "license": "CC BY-NC-SA 4.0",
   "homepage": "https://github.com/morkai/walkner-ipt-vision",
