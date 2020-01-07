@@ -32,6 +32,17 @@ The config file has the following structure:
       "type": "keyence-iv-hg",
       "host": "10.13.37.151",
       "port": 44818
+    },
+    "test-cognex-1": {
+      "type": "cognex-is2000",
+      "host": "10.13.37.152",
+      "user": "admin",
+      "pass": "",
+      "udp": {
+        "host": "10.13.37.250",
+        "port": 3000
+      },
+      "waitForResults": 5000
     }
   }
 }
@@ -60,10 +71,17 @@ where:
 
 Device properties depend on its `type`:
 
-* `keyence-iv-hg`
+* `keyence-iv-hg`:
   * `host` - an address of the device.
   * `port` - an EtherNet/IP TCP port that the device is listening on.
-
+* `cognex-is2000`:
+  * `host` - an address of the device,
+  * `user` - a device username to log in as,
+  * `pass` - a password for the specified user,
+  * `udp.host` - an address to listen for results on,
+  * `udp.port` - a port to listen for results on,
+  * `waitForResults` - a per-device override for the global `waitForResults`.
+  
 If the image data will be collected, then the FTP server Windows service
 must be installed by running `ftp-server.install.bat`. The service can be
 removed by running `ftp-server.uninstall.bat`.
@@ -90,6 +108,10 @@ The input file has the following structure:
       "device": "test-keyence-1",
       "program": 1,
       "tools": 16
+    },
+    {
+      "device": "test-cognex-1",
+      "program": "test-program-name"
     }
   ]
 }
@@ -108,6 +130,9 @@ Additional step properties depend on the type of the used device:
     program). 
   * `tools` - a number of tool results to include along with the overall
     step result. Defaults to 0, max is 16.
+* `cognex-is2000`:
+  * `program` - a job defined in the device to select
+    (`.JOB` extension is optional).
 
 The app writes debug messages to the stderr and the results JSON to the
 stdout.
@@ -167,7 +192,7 @@ where:
 Each step can have additional properties depending on the type of the
 device:
 
-* `keyence-iv-hg`
+* `keyence-iv-hg`:
   * `program` - a program number during judgement.
   * `processingTime` - a number of milliseconds that the device took to
     run the program.
@@ -178,3 +203,6 @@ device:
   * `tools.matchingRate` - the matching rate reported by the device.
   * `tools.lowerThreshold` - the lower threshold defined in the tool.
   * `tools.upperThreshold` - the upper threshold defined in the tool.
+* `cognex-is2000` - extra properties correspond to values send by the
+  the device as part of the results UDP frame (each `key=value` pair
+  must be separated by a tab `\t`).
