@@ -21,7 +21,7 @@
   },
   "main": "./backend/main",
   "dependencies": {
-    "ftp-srv": "~4.2.0",
+    "ftp-srv": "~4.3.4",
     "h5.step": "morkai/h5.step",
     "lodash": "~4.17.15",
     "sharp": "~0.23.1"
