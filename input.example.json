@@ -13,6 +13,10 @@
       "device": "test-keyence-1",
       "program": 1,
       "tools": 16
+    },
+    {
+      "device": "test-keyence-2",
+      "program": 0
     }
   ]
 }

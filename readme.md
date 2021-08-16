@@ -29,9 +29,9 @@ The config file has the following structure:
       "port": 44818
     },
     "test-keyence-2": {
-      "type": "keyence-iv-hg",
+      "type": "keyence-cv-x",
       "host": "10.13.37.151",
-      "port": 44818
+      "port": 8502
     },
     "test-cognex-1": {
       "type": "cognex-is2000",
@@ -74,6 +74,9 @@ Device properties depend on its `type`:
 * `keyence-iv-hg`:
   * `host` - an address of the device.
   * `port` - an EtherNet/IP TCP port that the device is listening on.
+* `keyence-cv-x`:
+  * `host` - an address of the device.
+  * `port` - a PC Program TCP port that the device is listening on.
 * `cognex-is2000`:
   * `host` - an address of the device,
   * `user` - a device username to log in as,
@@ -84,7 +87,9 @@ Device properties depend on its `type`:
   
 If the image data will be collected, then the FTP server Windows service
 must be installed by running `ftp-server.install.bat`. The service can be
-removed by running `ftp-server.uninstall.bat`.
+removed by running `ftp-server.uninstall.bat`. The FTP server is not needed
+for `keyence-cv-x`, because the image is downloaded directly from the vision
+system.
 
 ## Running
 
@@ -102,12 +107,12 @@ The input file has the following structure:
   "steps": [
     {
       "device": "test-keyence-1",
-      "program": 0
+      "program": 0,
+      "tools": 16
     },
     {
-      "device": "test-keyence-1",
-      "program": 1,
-      "tools": 16
+      "device": "test-keyence-2",
+      "program": 1
     },
     {
       "device": "test-cognex-1",
@@ -130,6 +135,9 @@ Additional step properties depend on the type of the used device:
     program). 
   * `tools` - a number of tool results to include along with the overall
     step result. Defaults to 0, max is 16.
+* `keyence-cv-x`:
+  * `program` - a program number between 0 and 999 to select (0 is the first
+    program).
 * `cognex-is2000`:
   * `program` - a job defined in the device to select
     (`.JOB` extension is optional).
@@ -203,6 +211,9 @@ device:
   * `tools.matchingRate` - the matching rate reported by the device.
   * `tools.lowerThreshold` - the lower threshold defined in the tool.
   * `tools.upperThreshold` - the upper threshold defined in the tool.
-* `cognex-is2000` - extra properties correspond to values send by the
+* `keyence-cv-x` - extra properties correspond to values sent by the
+  the device as part of the result log response (each `key=value` pair
+  must be separated by a comma `,`).
+* `cognex-is2000` - extra properties correspond to values sent by the
   the device as part of the results UDP frame (each `key=value` pair
   must be separated by a tab `\t`).
